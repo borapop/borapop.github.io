@@ -1,0 +1,90 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Eidetic memory training</title>
+		<link rel="stylesheet" href="./style.css">
+	</head>
+	<body>
+	
+		<div class="header">
+			<div class="wrapper">
+				<div class="header-layout">
+					Speed: 
+					<span class="speedLabel"></span>
+					<input id="speed" type="range" min="3" max="60" value="3">
+
+					Quantity:
+					<select id="quantity" class="quantity">
+						<option value="4">4</option>
+						<option value="9">9</option>
+						<option value="16">16</option>
+						<option value="25">25</option>
+						<option value="36">36</option>
+						<option value="49">49</option>
+						<option value="64">64</option>
+						<option value="81">81</option>
+						<option value="100">100</option>
+					</select>
+					
+					<button class="check" id="check">CHECK</button>
+
+					<button class="start" id="start">START</button>
+					<button class="stop" id="stop">STOP</button>
+					<span id="left" class="left">
+						Left:
+					</span>
+					<span id="timer" class="timer">
+
+					</span>
+					<span id="score" class="score">
+						
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="content">
+			<div class="wrapper">
+				<div class="content-layout" id="content-layout">
+					
+					<h1>Eidetic memory training</h1>
+					<p>After start You will see set of squares with different colors and numbers:</p>
+					<table>
+						<tr>
+							<td class="red">3</td>
+							<td class="blue">1</td>
+							<td class="green">4</td>
+							<td class="yellow">5</td>
+							<td>2</td>
+						</tr>
+					</table>
+					<p>Try to remember or "take a photo" of these squares and repeat it then.</p>
+
+					<table>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+					<p>If you make a mistake, you see a gray square on that place.</p>
+					<table>
+						<tr>
+							<td class="red">3</td>
+							<td class="wrongcolor"></td>
+							<td class="green">4</td>
+							<td class="yellow">5</td>
+							<td class="wrongNumber"></td>
+						</tr>
+					</table>
+
+				</div>
+			</div>
+		</div>
+
+
+		<script type="text/javascript" src="emt.js"></script>
+	</body>
+</html>
