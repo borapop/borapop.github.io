@@ -60,5 +60,5 @@ var shine = function(min, max, opacity, period){
 
 
 
-shine(100, 255, 50, 50);
+shine(50, 255, 50, 50);
 count(date);
