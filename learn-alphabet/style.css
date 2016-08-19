@@ -1,0 +1,24 @@
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+textarea {
+	border-radius: 5px;
+	width: 100%;
+	height: 60vw;
+}
+
+div#text {
+
+	min-width: 600px;
+	width: 60vw;
+	height: 100%;
+}
+
+span#hint {
+	background-color: pink;
+	border: 2px pink solid;
+	border-radius: 2px;
+}
