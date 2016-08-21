@@ -6,13 +6,22 @@ var alphabetLanguage = document.querySelector('#alphabet-language');
 
 var hardMode = document.querySelector('#hard-mode');
 
+window.onload = function(){
+	console.log(localStorage.pageScroll);
+	if (localStorage.pageScroll) {
+		console.log(localStorage.pageScroll);
+		window.scrollTo(0, localStorage.pageScroll);
+	}
+
+	remeberScrollPosition(1000);
+}
 
 if (localStorage.text) {
 	text.innerHTML = localStorage.text;
 }
 
 anotherTextLink.onclick = function(e) {
-	text.innerHTML = '<textarea id="source"></textarea>';
+	text.innerHTML = '<textarea placeholder="Paste here any text you want to read with another alphabet" id="source" ></textarea>';
 	textarea = document.querySelector('#source');
 	textarea.oninput = textAreaOninput;
 }
@@ -68,6 +77,16 @@ function replaceLetters(text, letters) {
 	return editedText;
 }
 
+function remeberScrollPosition(interval) {
+	function run() {
+		setTimeout(function() {
+			localStorage.setItem('pageScroll', document.body.scrollTop);
+			setTimeout(run, interval);
+		}, interval)
+	}
+	run();
+}
+
 
 var ru_gr = {
 	'length' : 22,
@@ -95,6 +114,35 @@ var ru_gr = {
 	'х' : 'χ'
 }
 
+var ru_ka = {
+	'length' : 24,
+	'а' : 'ა',
+	'б' : 'ბ',
+	'в' : 'ვ',
+	'г' : 'გ',
+	'д' : 'დ',
+	'е' : 'ე',
+	'э' : 'ე',
+	'ж' : 'ჟ',
+	'з' : 'ზ',
+	'и' : 'ი',
+	'к' : 'კ',
+	'л' : 'ლ',
+	'м' : 'მ',
+	'н' : 'ნ',
+	'о' : 'ო',
+	'п' : 'პ',
+	'р' : 'რ',
+	'с' : 'ს',
+	'т' : 'ტ',
+	'у' : 'უ',
+	'х' : 'ხ',
+	'ц' : 'ც',
+	'ч' : 'ჩ',
+	'ш' : 'შ'
+}
+
 var langs = {
-	'ru_gr' : ru_gr	
+	'ru_gr' : ru_gr,
+	'ru_ka' : ru_ka
 }

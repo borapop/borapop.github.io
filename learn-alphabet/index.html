@@ -1,24 +1,47 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Learn alhabet</title>
 	<link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<div>
-		Language:
-		<select id="source-language">
-			<option value="ru">Russian</option>
-		</select> Alphabet:
-		<select id="alphabet-language">
-			<option value="gr">Greek</option>
-		</select><br>
-		<input type="checkbox" id="hard-mode"> Hard mode
-		<a href="#" id="new-text">Try another text</a>
+	<div id="onload-message"></div>
+	<div class="logo">
+		Learn Alphabet
 	</div>
-	<div id="text">
-		<textarea id="source" ></textarea>
-	</div>
+	<ul class="menu">
+		<li>
+			Language:
+			<select id="source-language">
+				<option value="ru">Russian</option>
+			</select>
+		</li>
+		<li>
+			Alphabet:
+			<select id="alphabet-language">
+				<option value="gr">Greek</option>
+				<option value="ka">Georgian</option>
+			</select>
+		</li>
+		<li>
+			 Hard mode: <input type="checkbox" id="hard-mode">
+		</li>
+		<li>
+			<a href="#" id="new-text">Try another text</a>
+		</li>	
+		
+	</ul>
+		<div class="flex-container">
+			<div class="hints">
+					
+				</div>
+				<div id="text">
+					<textarea placeholder="Paste here any text you want to read with another alphabet" id="source" ></textarea>
+			</div>
+		</div>
+		
 	
 
 	<script type="text/javascript" src="script.js"></script>

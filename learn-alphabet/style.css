@@ -1,24 +1,156 @@
 body {
 	display: flex;
+	margin: 0px;
 	flex-direction: column;
 	align-items: center;
+	font-size: 1em;
+}
+
+.flex-container {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+
+.logo {
+	margin-top: 10px;
+	font-size: 4em;
+	font-family: "Roboto", serif;
+}
+
+.menu {
+	font-family: "Roboto", serif;
+	color: white;
+	list-style: none;
+	margin: 10px 0 20px 0;
+	padding: 0 20px;
+	width: 60vw;
+	height: auto;
+	background-color: black;
+
+}
+
+.menu > li {
+	top: 0px;
+	height: 30px;
+	padding: 5px;
+	display: inline-block;
+}
+
+.menu > li > a {
+	color: white;
+	text-decoration: none;
+	border-bottom: 1px dashed white;
+}
+
+select {
+	padding: 0;
+	margin: 0;
+
 }
 
 textarea {
 	border-radius: 5px;
 	width: 100%;
-	height: 60vw;
+	height: 40vw;
 }
 
 div#text {
-
-	min-width: 600px;
 	width: 60vw;
 	height: 100%;
 }
 
+.hints {
+	width: 20vw;
+
+}
+
 span#hint {
+	position: absolute;
+	right: 85vw;
+	transition: font 0.3s ease;
 	background-color: pink;
-	border: 2px pink solid;
-	border-radius: 2px;
+	border: 5px pink solid;
+	border-radius: 4px;
+}
+
+span#hint:hover {
+	display: inline-block;
+	transition: all 0.3s ease-in-out;
+	background-color: red;
+	border: 5px red solid;
+	border-radius: 4px;
+}
+
+@media(max-width: 480px){
+
+
+	.logo {
+		font-size: 2em;
+	}	
+
+	.menu {
+		font-size: 1.2em;
+		color: white;
+		list-style: none;
+		min-width: 0;
+		margin: 0 0 20px 0;
+		width: auto;
+		height: auto;
+		background-color: black;
+		border-radius: 0;
+		box-shadow: none;
+	}
+
+	.menu > li {
+		margin: 0;
+		padding: 10px;
+		display: inline-block;
+	}
+
+	select: {
+		background: black;
+	}
+	div#text {
+		width: 90vw;
+	}
+
+	.hints {
+		width: 5vw;
+	}
+
+	span#hint {
+		display: inline-flex;
+		position: relative;
+		right: 0;
+		word-break: keep-all;
+		transition: font 0.3s ease;
+		background-color: pink;
+		border: 2px pink solid;
+		border-radius: 2px;
+	}
+
+
+}
+
+
+@media (max-width: 640px) and (min-width: 480px){
+
+
+	span#hint {
+		position: absolute;
+		right: 83vw;
+		transition: font 0.3s ease;
+		background-color: pink;
+		border: 5px pink solid;
+		border-radius: 4px;
+	}
+
+	span#hint:hover {
+		display: inline-block;
+		transition: all 0.3s ease-in-out;
+		background-color: red;
+		border: 5px red solid;
+		border-radius: 4px;
+	}
 }
