@@ -19,12 +19,14 @@ body {
 }
 
 .menu {
+	display: flex;
+	justify-content: center;
 	font-family: "Roboto", serif;
 	color: white;
 	list-style: none;
 	margin: 10px 0 20px 0;
-	padding: 0 20px;
-	width: 60vw;
+	padding: 0;
+	width: 100%;
 	height: auto;
 	background-color: black;
 
@@ -32,6 +34,7 @@ body {
 
 .menu > li {
 	top: 0px;
+	margin: 0;
 	height: 30px;
 	padding: 5px;
 	display: inline-block;
@@ -65,22 +68,17 @@ div#text {
 
 }
 
-span#hint {
+.hint {
 	position: absolute;
 	right: 85vw;
 	transition: font 0.3s ease;
-	background-color: pink;
-	border: 5px pink solid;
+	background-color: lightgrey;
+	border: 5px lightgrey solid;
 	border-radius: 4px;
+
+	transition: all 0.3s ease-in-out;
 }
 
-span#hint:hover {
-	display: inline-block;
-	transition: all 0.3s ease-in-out;
-	background-color: red;
-	border: 5px red solid;
-	border-radius: 4px;
-}
 
 @media(max-width: 480px){
 
@@ -90,21 +88,20 @@ span#hint:hover {
 	}	
 
 	.menu {
+		display: flex;
 		font-size: 1.2em;
 		color: white;
 		list-style: none;
-		min-width: 0;
 		margin: 0 0 20px 0;
-		width: auto;
-		height: auto;
+		width: 100%;
+		height: 80px;
 		background-color: black;
-		border-radius: 0;
-		box-shadow: none;
 	}
 
 	.menu > li {
 		margin: 0;
-		padding: 10px;
+		height: 100%;
+		padding: 5px;
 		display: inline-block;
 	}
 
@@ -119,7 +116,7 @@ span#hint:hover {
 		width: 5vw;
 	}
 
-	span#hint {
+	.hint {
 		display: inline-flex;
 		position: relative;
 		right: 0;
@@ -137,20 +134,12 @@ span#hint:hover {
 @media (max-width: 640px) and (min-width: 480px){
 
 
-	span#hint {
+	.hint {
 		position: absolute;
 		right: 83vw;
 		transition: font 0.3s ease;
 		background-color: pink;
 		border: 5px pink solid;
-		border-radius: 4px;
-	}
-
-	span#hint:hover {
-		display: inline-block;
-		transition: all 0.3s ease-in-out;
-		background-color: red;
-		border: 5px red solid;
 		border-radius: 4px;
 	}
 }

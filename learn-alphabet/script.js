@@ -7,17 +7,17 @@ var alphabetLanguage = document.querySelector('#alphabet-language');
 var hardMode = document.querySelector('#hard-mode');
 
 window.onload = function(){
-	console.log(localStorage.pageScroll);
+	
 	if (localStorage.pageScroll) {
-		console.log(localStorage.pageScroll);
+		
 		window.scrollTo(0, localStorage.pageScroll);
 	}
 
-	remeberScrollPosition(1000);
-}
+	if (localStorage.text) {
+		text.innerHTML = localStorage.text;
+	}
 
-if (localStorage.text) {
-	text.innerHTML = localStorage.text;
+	remeberScrollPosition(1000);
 }
 
 anotherTextLink.onclick = function(e) {
@@ -27,8 +27,7 @@ anotherTextLink.onclick = function(e) {
 }
 
 function textAreaOninput(e) {
-	console.log();
-	console.log('input');
+
 	var replacedText;
 	if (hardMode.checked) {
 		replacedText = replaceLetters(textarea.value, langs[sourceLanguage.value + '_' + alphabetLanguage.value]);
@@ -38,32 +37,75 @@ function textAreaOninput(e) {
 
 	text.innerHTML = replacedText;
 	localStorage.setItem('text', replacedText);
-}
 
+
+}
 textarea.oninput = textAreaOninput;
 
+function sortByFreq(text, letters) {
+	var lettersObject = {};
+	for (var i = 0, textLength = text.length; i < textLength; i++) {
+		if (!letters[text[i]]) continue;
+		if (!lettersObject[text[i]]) {
+			lettersObject[text[i]] = 1;
+		} else {
+			lettersObject[text[i]]++;
+		}
+	}
+
+	var lettersArray = [];
+	for (letter in lettersObject) {
+		lettersArray.push([letter, lettersObject[letter]]);
+	}
+
+	var lettersArraySorted = lettersArray.sort(function(a, b){
+		return b[1] - a[1];
+	});
+	return(lettersArraySorted);
+}
+
+
 function replaceLettersSmoothly(text, letters) {
+	var sortedLetters = sortByFreq(text, letters);
+	if (text.length < 4000) return 'Text length should be more than 4000 symbols, you can try "hard mode" with less symbols'
 	var editedText = text;
-	var chunk = Math.floor(text.length / letters.length);
+	var chunk = Math.floor(text.length / sortedLetters.length);
+	start = - Math.floor(chunk * 0.8);
 	var i = 0;
 	var hint;
-	for (var letter in letters) {
-		if (letter != 'length') {
-			i++;
-			textPartA = editedText.substr(0, i * chunk);
-			textPartB = editedText.substr(i * chunk, text.length);
-			textPartB = textPartB.replace(new RegExp(letter, 'gi'), letters[letter]);
-			hint = ' <span id="hint">' + letters[letter] + ' = ' + letter + '</span> ';
-			for(var k = textPartA.length; k > 0; k--) {
+	var replacement;
+	var regexp;
+	var hintRegexp;
+	var letter;
+	var prevHintLength = '';
+	for (var i = 0, sortedLettersLength = sortedLetters.length; i < sortedLettersLength; i++) {
+		sortedLetters[i][2] = letters[letter];
+		textPartA = editedText.substr(0, start + chunk + prevHintLength);
+		textPartB = editedText.substr(start + chunk + prevHintLength, text.length);
+		
+		letter = sortedLetters[i][0];
+		regexp = new RegExp(letter, 'g');
+		replacement = letters[letter];
+		textPartB = textPartB.replace(regexp, replacement);
+
+		hint = ' <span class="hint hint' + i + '">' + letters[letter] + ' = ' + letter + '</span>';
+		
+		for(var k = textPartA.length; k > 0; k--) {
 				if (textPartA[k] == " ") {
 					textPartA = textPartA.substr(0, k) + hint + textPartA.substr(k, textPartA.length);
 					break;
 				}
 			}
-			editedText = textPartA + textPartB;
-		}
+
+		prevHintLength = (hint + replacement).length;
+
+		editedText = textPartA + textPartB;
+		start += chunk;
 	}
+
+
 	return editedText;
+
 }
 
 function replaceLetters(text, letters) {
