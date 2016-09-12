@@ -18,7 +18,6 @@ div {
 }
 
 .first {
-	transition: top .2s ;
 	position: fixed;
 	top: 0;
 	margin-bottom: -100px;
