@@ -15,7 +15,7 @@ var prevScrollY = 0;
 window.onscroll = function(e) {
 	var scrollY = window.scrollY;
 	if (scrollY < secondline - 100) {
-		if ((scrollY < firstline) && (scrollY < prevScrollY)) {
+		if ((scrollY < firstline - 100) && (scrollY < prevScrollY)) {
 			firstElement.style.position = 'absolute';
 			firstElement.style.top = '0px' ;
 		} else {
