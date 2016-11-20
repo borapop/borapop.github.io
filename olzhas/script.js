@@ -1,5 +1,6 @@
 var date = new Date(2015, 11, 5, 12)
 var body = document.body;
+var textElem = document.querySelector('div');
 var count = function(date) {
 	var today = new Date();
 	var passed = Math.floor( (today - date)  / 1000 / 60 / 60 / 24);
@@ -10,55 +11,30 @@ var count = function(date) {
 	return false;
 };
 
-var generateColor = function(min, max) {
-	return Math.floor(Math.random() * (max - min)) + min;
+var generateColorRGBAStrings = function(min, max, opacity) {
+	var generateChannel = function() {
+		return Math.floor(Math.random() * (max - min));
+	}
+	var color = [generateChannel(), generateChannel(), generateChannel()];
+	var colorString = 'rgba(' + color[0] + ',' + color[1] + ',' + color[2] + ',' + opacity + ')';
+	return {
+		textColor: 'black',
+		backgroundColor: colorString
+	};
 }
 
 var shine = function(min, max, opacity, period){
-	
+	var changeColors = function(color) {
+		body.style.backgroundColor = color.backgroundColor;
+		textElem.style.color = color.textColor;
+	};
 
-	var r = generateColor(min, max);
-	var g = generateColor(min, max);
-	var b = generateColor(min, max);
-	
-	var rp = generateColor(min, max);
-	var gp = generateColor(min, max);
-	var bp = generateColor(min, max);
-
-
+	changeColors(generateColorRGBAStrings(min, max, opacity));
 	setTimeout(function run() {
-		
-		body.style.background = 'rgba(' + r + ', ' + g + ', ' + b + ', ' + opacity + ')';
-		
-
-
-		if (r > rp) {
-			r--;
-		} else if (r < rp) {
-			r++;
-		} else if (g > gp) {
-			g--;
-		} else if (g < gp) {
-			g++;
-		} else if (b > bp) {
-			b--;
-		} else if (b < bp) {
-			b++;
-		} else {
-
-			rp = generateColor(min, max);
-			gp = generateColor(min, max);
-			bp = generateColor(min, max);
-
-		}
- 
-		
-
+		changeColors(generateColorRGBAStrings(min, max, opacity));
 		setTimeout(run, period);
-	}, period);
+	}, period)
 }
 
-
-
-shine(50, 255, 50, 50);
+shine(50, 255, 100, 4000);
 count(date);

@@ -2,13 +2,14 @@ body {
 	font-family: 'Roboto', sans-serif;
 	font-size: 4vw;
 	display: flex;
-    align-items: center;
-    justify-content: center;
-
-
+  align-items: center;
+  justify-content: center;
+	transition-property: background-color;
+	transition: linear 4s;
 }
 
 div {
+	transition: linear 4s;
 	text-align: right;
 	margin: 20px;
 }
