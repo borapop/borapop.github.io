@@ -3,7 +3,7 @@ var body = document.body;
 var textElem = document.querySelector('div');
 var count = function(date) {
 	var today = new Date();
-	var passed = Math.floor( (today - date)  / 1000 / 60 / 60 / 240) - 1;
+	var passed = Math.floor( (today - date)  / 1000 / 60 / 60 / 240);
 
 	var temp = passed;
 	var dateElem = document.getElementById('dateElem');
