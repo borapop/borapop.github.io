@@ -7,7 +7,7 @@ var count = function(date) {
 
 	var temp = passed;
 	var dateElem = document.getElementById('dateElem');
-	dateElem.innerHTML = ' ' + passed + ' ';
+	dateElem.innerHTML = passed;
 	return false;
 };
 
