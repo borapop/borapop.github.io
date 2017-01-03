@@ -3,5 +3,8 @@ body {
   max-width: 640px;
   font-family: sans-serif;
 }
-p {
+div.digression {
+  background-color: #DFDFDF;
+  border-radius: 5px;
+  padding: 10px;
 }
