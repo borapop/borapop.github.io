@@ -2,7 +2,7 @@ body {
   margin: auto;
   max-width: 640px;
   font-family: sans-serif;
-  padding-top: 50px;
+  padding: 50px 10px 10px 10px;
 }
 p {
   line-height: 1.35em;
