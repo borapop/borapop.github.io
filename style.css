@@ -1,10 +1,17 @@
 body {
-  margin: 20px;
+  margin: auto;
   max-width: 640px;
   font-family: sans-serif;
+  padding-top: 50px;
+}
+p {
+  line-height: 1.35em;
+}
+sup {
+  line-height: 1em;
 }
 div.digression {
-  background-color: #DFDFDF;
+  background-color: #FDDDFD;
   border-radius: 5px;
-  padding: 10px;
+  padding: 10px 20px;
 }
